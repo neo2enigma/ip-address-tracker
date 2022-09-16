@@ -1,0 +1,186 @@
+/* Reset CSS */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+    isolation: isolate;
+}
+
+
+/* Variables */
+
+:root {
+    --dark-grey: hsl(0, 0%, 17%);
+    --light-grey: hsl(0, 0%, 59%);
+}
+
+
+/* Styling */
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-size: 18px;
+    background-image: url('./images/pattern-bg.png');
+    background-repeat: no-repeat;
+    background-position: top 0;
+    background-size: auto 300px;
+}
+
+main {
+    position: relative;
+    display: block;
+    width: 100%;
+    /* height: 100vh; */
+}
+
+header,
+main {
+    /* margin: auto; */
+}
+
+header {
+    margin-top: 26px;
+}
+
+main label {
+    margin: auto;
+    width: 327px;
+    height: 58px;
+    /* position: relative; */
+}
+
+main input {
+    cursor: pointer;
+    /* opacity: .5; */
+    font-weight: 400;
+    float: left;
+    border: none;
+    border-radius: 15px 0 0 15px;
+    width: 269px;
+    height: 58px;
+    padding: 18px 0 19px 24px;
+}
+
+main input::placeholder {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.33px;
+    opacity: .5;
+}
+
+
+
+main button {
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 58px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    width: 58px;
+    height: 58px;
+    border-radius: 0 15px 15px 0;
+}
+
+
+h1 {
+    text-align: center;
+    color: #fff;
+}
+
+main label {
+    display: block;
+    margin-top: 29px;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    width: 327px;
+    height: 294px;
+    margin: 24px auto 0;
+    padding: 26px 24px 24px;
+    background-color: #fff;
+    border-radius: 15px;
+    align-items: center;
+}
+
+.flex-item {
+    width: 279px;
+    height: 43px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.46px;
+    line-height: 12px;
+    opacity: 0.5;
+    text-transform: uppercase;
+}
+
+.flex-item p {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -.18px;
+    margin-top: 7px;
+}
+
+#cointainer {}
+
+#map {
+    height: 100vh;
+    z-index: -1;
+    width: 100%;
+    top: 191px;
+    position: absolute;
+    margin: auto;
+}
