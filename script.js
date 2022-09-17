@@ -8,6 +8,9 @@ L.marker([51.5, -0.09]).addTo(map)
     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
     .openPopup();
 
+// new implementation
+
+
 // let myIp;
 // $.getJSON('https://api.db-ip.com/v2/free/self', function (data) {
 //     myIp = JSON.stringify(data, null, 2);
