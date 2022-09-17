@@ -5,17 +5,23 @@ const apiKey = 'at_BDVP1HqV2uRogHt1o4TB0m52iGqe8';
 const url = 'https://geo.ipify.org/api/v2/country,city';
 
 
+const ipTag = document.querySelector('#ip');
+const locationTag = document.querySelector('#location');
+const timezoneTag = document.querySelector('#timezone');
+const ispTag = document.querySelector('#isp');
+const form = document.querySelector('form');
+
+
+
+function setTagValue(params) {
+    ipTag.innerHTML = params.ip;
+    locationTag.innerHTML = `${params.region}, ${params.city}`;
+    timezoneTag.innerHTML = `UTC ${params.timezone}`;
+    ispTag.innerHTML = params.isp;
+}
 
 function getValues() {
-    let params;
-    // const keys = Object.keys[localStorage];
-    // console.log(keys);
-    // for (let i = 0; i < keys.length; i++) {
-    //     console.log(localStorage.getItem(keys[i]));
-    //     params.push(localStorage.key[i]);
-    // }
-    params = { ...localStorage };
-    // console.log(params);
+    const params = { ...localStorage };
     return params;
 }
 
@@ -45,16 +51,6 @@ function extractData(data) {
 }
 
 
-function painMap(lat, lng) {
-
-    map = L.map('map').setView([lat, lng], 16);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-
-}
-
 function showPop(lat, lng, ip) {
     L.marker([lat, lng]).addTo(map)
         .bindPopup(`IP Address: ${ip}`)
@@ -62,13 +58,26 @@ function showPop(lat, lng, ip) {
 }
 
 
+function painMap(lat, lng, ip) {
+    console.log(lat, lng, ip);
+    map = L.map('map').setView([lat, lng], 16);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-async function getLocation() {
+    showPop(lat, lng, ip);
+}
+
+
+
+
+
+async function getLocation(ip) {
     try {
-        const ip = localStorage.getItem('ip') ? localStorage.getItem('ip') : '';
+        const storageIp = localStorage.getItem('ip') ? localStorage.getItem('ip') : '';
         let result;
-        if (ip === '') {
-            const data = await getGeo();
+        if (storageIp === '' || ip) {
+            const data = await getGeo(ip);
             result = extractData(data);
             setValues(result);
         } else {
@@ -82,6 +91,24 @@ async function getLocation() {
 
 
 getLocation().then(result => {
-    painMap(result['lat'], result['lng']);
-    showPop(result['lat'], result['lng'], result['ip']);
+    setTagValue(result);
+    const { lat, lng, ip } = result;
+    painMap(lat, lng, ip);
+
 }).catch(err => console.log(err));
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const ip = form.querySelector('input').value;
+
+    getLocation(ip).then(result => {
+        setTagValue(result);
+        const { lat, lng } = result;
+        map.remove();
+        painMap(lat, lng, ip);
+    }).catch(err => console.log(err));
+
+});
+
