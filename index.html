@@ -35,27 +35,30 @@
     </header>
     <main>
         <label>
-            <input type="text" placeholder="Search for any IP address or domain">
-            <button type="button"> > </button>
+            <form>
+                <input pattern="^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$" type="text"
+                    placeholder="Search for any IP address or domain" required>
+                <button type="submit" id="search"> > </button>
+            </form>
         </label>
         <section class="flex-container">
             <article class="flex-item">
                 <h3>ip address</h3>
                 <section class="details">
-                    <p>192.168.1.1</p>
+                    <p id="ip">192.168.1.1</p>
                 </section>
             </article>
             <article class="flex-item">
                 <h3>location</h3>
-                <p>Brok 1001</p>
+                <p id="location">Brok 1001</p>
             </article>
             <article class="flex-item">
                 <h3>timezone</h3>
-                <p>UTC -05:00</p>
+                <p id="timezone">UTC -05:00</p>
             </article>
             <article class="flex-item">
                 <h3>isp</h3>
-                <p>SpaceX Starlink</p>
+                <p id="isp">SpaceX Starlink</p>
             </article>
         </section>
         <div id="map"></div>
