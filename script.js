@@ -52,15 +52,22 @@ function extractData(data) {
 
 
 function showPop(lat, lng, ip) {
-    L.marker([lat, lng]).addTo(map)
-        .bindPopup(`IP Address: ${ip}`)
-        .openPopup();
+    const blackIcon = new L.Icon({
+        iconUrl: './images/icon-location.svg',
+        iconSize: [46, 56],
+        iconAnchor: [46, 56],
+    });
+
+
+    L.marker([lat, lng], { icon: blackIcon }).addTo(map)
+        .bindPopup(`IP Address: ${ip}`);
+    // .openPopup();
 }
 
 
 function painMap(lat, lng, ip) {
     console.log(lat, lng, ip);
-    map = L.map('map').setView([lat, lng], 16);
+    map = L.map('map', { zoomControl: false, scrollWheelZoom: false }).setView([lat, lng], 16);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);

@@ -12,7 +12,7 @@
 
 html,
 body {
-    height: 100%;
+    /* height: 100%; */
 }
 
 body {
@@ -75,24 +75,23 @@ main {
     position: relative;
     display: block;
     width: 100%;
-    /* height: 100vh; */
 }
 
-header,
-main {
-    /* margin: auto; */
-}
 
 header {
-    margin-top: 26px;
+    margin-top: 28px;
 }
 
 main label {
+    display: block;
+    margin-top: 29px !important;
     margin: auto;
     width: 327px;
     height: 58px;
     /* position: relative; */
 }
+
+
 
 main input {
     cursor: pointer;
@@ -113,8 +112,14 @@ main input::placeholder {
     opacity: .5;
 }
 
+main input:focus {
+    outline: none;
+}
 
 main button {
+    background-image: url('./images/icon-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: center;
     cursor: pointer;
     font-size: 12px;
     line-height: 58px;
@@ -126,16 +131,20 @@ main button {
     border-radius: 0 15px 15px 0;
 }
 
+main button:hover {
+    background-color: var(--light-grey)
+}
+
 
 h1 {
     text-align: center;
     color: #fff;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: -.23px;
 }
 
-main label {
-    display: block;
-    margin-top: 29px;
-}
 
 .flex-container {
     display: flex;
@@ -165,6 +174,11 @@ h3 {
     text-transform: uppercase;
 }
 
+h3,
+p {
+    color: var(--dark-grey);
+}
+
 .flex-item p {
     font-size: 20px;
     font-weight: 500;
@@ -181,4 +195,73 @@ h3 {
     top: 191px;
     position: absolute;
     margin: auto;
+}
+
+
+@media only screen and (min-width: 1140px) {
+    body {
+        background-image: url('./images/pattern-bg.png');
+        background-size: 1440 280px;
+        background-position: top;
+    }
+
+    header {
+        margin-top: 33px;
+    }
+
+    main label {
+        margin: auto;
+        width: 555px;
+        margin-top: 31px;
+    }
+
+    main input {
+        width: 497px;
+    }
+
+    .flex-container {
+        flex-flow: row;
+        /* justify-content: space-between; */
+        width: 1110px;
+        height: 161px;
+        margin: 48px auto 0;
+        padding: 37px 32px;
+        align-items: flex-start;
+    }
+
+    .flex-item {
+        width: 213px;
+        height: 75px;
+        text-align: left;
+    }
+
+    .flex-item::after {
+        /* content: '';
+        width: 213px;
+        height: 75px;
+        right: 0;
+        top: 0;
+        border-right: 1px solid red;
+        position: absolute;*/
+    }
+
+    .flex-item:not(:first-child) {
+        border-left: 1px solid rgba(0, 0, 0, 0.15);
+        padding-left: 32px;
+
+    }
+
+    h3 {
+        font-size: 12px;
+        letter-spacing: 1.75px;
+        line-height: 14px;
+        opacity: 0.5;
+    }
+
+    .flex-item p {
+        line-height: 30px;
+        letter-spacing: -.23px;
+        margin-top: 13px;
+    }
+
 }
