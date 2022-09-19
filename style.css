@@ -198,7 +198,8 @@ p {
 }
 
 
-@media only screen and (min-width: 1140px) {
+/* @media only screen and (min-width: 1140px) { */
+@media only screen and (min-width: 500px) {
     body {
         background-image: url('./images/pattern-bg.png');
         background-size: 1440 280px;
@@ -230,26 +231,28 @@ p {
     }
 
     .flex-item {
-        width: 213px;
-        height: 75px;
+        position: relative;
+        width: 277px;
+        height: 88px;
         text-align: left;
-    }
-
-    .flex-item::after {
-        /* content: '';
-        width: 213px;
-        height: 75px;
-        right: 0;
-        top: 0;
-        border-right: 1px solid red;
-        position: absolute;*/
+        /* float: left; */
     }
 
     .flex-item:not(:first-child) {
-        border-left: 1px solid rgba(0, 0, 0, 0.15);
-        padding-left: 32px;
 
+        /* padding-left: 32px; */
     }
+
+    .flex-item:not(:last-child)::after {
+        position: absolute;
+        content: '';
+        background-color: rgba(0, 0, 0, 0.15);
+        width: 1px;
+        height: 75px;
+        right: 32px;
+        top: 6.5px;
+    }
+
 
     h3 {
         font-size: 12px;
@@ -259,9 +262,11 @@ p {
     }
 
     .flex-item p {
+        width: 213px;
         line-height: 30px;
         letter-spacing: -.23px;
         margin-top: 13px;
+        word-wrap: break-word;
     }
 
 }
