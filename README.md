@@ -31,7 +31,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./screenshots/01.png)
+![](./screenshots/02.png)
 
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
@@ -43,42 +44,51 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Download solution](https://github.com/neo2enigma/ip-address-tracker)
+- [View live demo](https://neo2enigma.github.io/ip-address-tracker/)
 
 ## My process
+1- Analyzing design in the first step give us a better understanding of the design contept, elements needed and structure of the project.
+2- Implementing HTML code to create a solid structure
+3- implementing CSS with Mobile First View approach in a way that starts from container/block level and ends with coloring and decoration.
+4- Categorizing CSS styles to make it more Object Oriented style.
+5- Implementing form event handler with JavaScript.
+6- Implementing GeoIP code to extract IP address, latitude and longitude, location and timezone
+7- Implementing LeafletJs to convert lat/lng to a drop pin on map.
+8- Implementing localStorage code to manilulate data.
+9- Integrate all parts
 
 ### Built with
 
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
+- JavaScript
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [IPify](https://geo.ipify.org/) - IP Geolocation API
+- [LeafletJS](https://leafletjs.com/)) - JavaScript library for mobile-friendly interactive maps
 
 **Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This project create an opportunity to integrate a map rendering library to Geolocation API. It has more javaScript job to do although, CSS parts also have some nice tricks.
 
-To see how you can add code snippets, see below:
+If you have a closer look on the design in desktop view, there is a small vertical line along information boxes which repeated 3 times. You cannot create such thing with left/right border since it is shorter that the total height of those boxes.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+As you see below, I manage this by a pseudo element. One important thing is to have a padding of 32px to the right of vertical line, you have to make a 32px room from right for this pseudo. it does not work with padding of .flex-item elements.
+
+
 ```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+    .flex-item:not(:last-child)::after {
+        position: absolute;
+        content: '';
+        background-color: rgba(0, 0, 0, 0.15);
+        width: 1px;
+        height: 75px;
+        right: 32px;
+        top: 6.5px;
+    }
 ```
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
